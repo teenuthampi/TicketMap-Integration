@@ -16,7 +16,7 @@ module Api
       respond_to do |format|
         format.json do
           if @ticket.save!
-            create_excavator(@ticket)
+            excavator_params(@ticket)
             render json: @ticket
           else
             render json: @ticket.errors, status: :unprocessable_entity
