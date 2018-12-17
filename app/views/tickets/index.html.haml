@@ -1,0 +1,32 @@
+.edit-profile
+  .container
+    .row
+      .col-sm-12
+        .profile-area
+          .col-md-12
+            .panel.panel-default
+              .panel-heading
+                %br/
+                %h4 Tickets List
+              .panel-body
+                .box-body.table-responsive.no-padding
+                  %table.table.table-hover
+                    %tr
+                      %th{:width => "30%"} request_number
+                      %th{:width => "20%"} sequence_number
+                      %th{:width => "20%"} request_type 
+                      %th{:width => "50%"} response_due_date_time
+                      %th{:width => "50%"} primary_service_area_code
+                      %th{:width => "50%"} additional_service_area_code
+                      %th{:width => "50%"}
+                    - @tickets.each_with_index do |ticket,index|
+                      %tr{:id => "content_#{ticket.id}"}
+                        %td= ticket.request_number
+                        %td= ticket.sequence_number
+                        %td= ticket.request_type 
+                        %td= ticket.response_due_date_time
+                        %td= ticket.primary_service_area_code
+                        %td= ticket.additional_service_area_code
+                        %td
+                          = link_to 'Show', ticket_url(ticket)
+                         
