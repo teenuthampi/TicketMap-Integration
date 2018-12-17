@@ -16,7 +16,7 @@ module Api
       respond_to do |format|
         format.json do
           if @ticket.save!
-            excavator_params(@ticket)
+            create_excavator(@ticket)
             render json: @ticket
           else
             render json: @ticket.errors, status: :unprocessable_entity
@@ -32,8 +32,8 @@ module Api
                                        :primary_service_area_code,:additional_service_area_code,:wellknown_text)
       end
 
-      def excavator_params(ticket)
-        ticket.excavator_params(
+      def create_excavator(ticket)
+        ticket.create_excavator(
           company_name: params[:ticket][:Excavator][:CompanyName],address: params[:ticket][:Excavator][:Address],city: params[:ticket][:Excavator][:City],
           state: params[:ticket][:Excavator][:State],zip: params[:ticket][:Excavator][:Zip]
         )
