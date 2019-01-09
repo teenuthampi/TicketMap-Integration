@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181215131548) do
+ActiveRecord::Schema.define(version: 20190109155056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20181215131548) do
     t.string "request_type"
     t.datetime "response_due_date_time"
     t.string "primary_service_area_code"
-    t.string "additional_service_area_code"
+    t.string "additional_service_area_code", array: true
     t.text "wellknown_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

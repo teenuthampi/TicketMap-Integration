@@ -28,8 +28,15 @@ module Api
       private
 
       def ticket_params
-        params.require(:ticket).permit(:request_number, :sequence_number, :requestType, :response_due_date_time,
-                                       :primary_service_area_code,:additional_service_area_code,:wellknown_text)
+        params.require(:ticket).permit(
+          request_number: params[:ticket][:RequestNumber],
+          sequence_number: params[:ticket][:SequenceNumber],
+          request_type: params[:ticket][:RequestType],
+          response_due_date_time: params[:ticket][:DateTimes][:ResponseDueDateTime],
+          primary_service_area_code: params[:ticket][:ServiceArea][:PrimaryServiceAreaCode][:SACode],
+          additional_service_area_codes: params[:ticket][:ServiceArea][:AdditionalServiceAreaCodes][:SACode],
+          wellknown_text: params[:ticket][:ExcavationInfo][:DigsiteInfo][:WellKnownText]
+        )
       end
 
       def create_excavator(ticket)
